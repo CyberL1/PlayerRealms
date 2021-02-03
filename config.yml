@@ -1,0 +1,82 @@
+lobby:
+  world: "world"
+messages:
+  realms:
+    creation:
+      started: "Realm creation has stared. May lag"
+      done: "Done. Use /realms to go to your realm"
+    chat:
+      deop: "[&8PLAYER&f] %player% %msg%"
+      op: "[&4OP&f] %player% %msg%"
+      creator: "[&cCREATOR&f] %player% %msg%"
+    opening: "Opening realm, please wait"
+    renewed: "Realm renewed"
+    deleted: "Realm deleted"
+  commands:
+    rc:
+      errors:
+        realmonly: "This command won't work outsite of realm"
+        nopermission: "Insufficent permission"
+      noargs:
+        header: "&e---------- &rHelp: Realm &e----------"
+        description: "&7Below is a list of all Realm commands:"
+        body: "&6/rc %command%: &r%description%"
+      gamemode:
+        set: "Set own game mode to %gamemode% Mode"
+        error: "%gamemode% is not proper game mode"
+      op:
+        creator: "You cannot op realm creator"
+        success: "Made %target% a server operator"
+      deop:
+        creator: "You cannot deop realm creator"
+        success: "Made %target% no longer a server operator"
+      time:
+        set: "Set time to %time%"
+        error: "%time% is not proper time value"
+      difficulty:
+        set: "The difficulcty has been set to %difficulty%"
+        error: "%difficulty% is not propper difficulty mode"
+      pvp:
+        set: "Set pvp mode to %mode%"
+        error: "%mode% is not proper pvp mode"
+      defaultgamemode:
+        set: "The default game mode is now %gamemode% Mode"
+        error: "%gamemode% is not proper game mode"
+      close:
+        success: "Realm closed"
+      clear:
+        success: "Cleared %target%'s inventory"
+      weather:
+        set: "Set the weather to %weather%"
+        error: "%weather% is not proper weather"
+items:
+  next: "Next"
+  close: "Close"
+  previous: "Previous"
+  realms:
+    selector: "Select realm"
+    manu: "Realm menu"
+    create: "Create a realm"
+    go: "Go to your realm"
+    invites:
+      title: "Realm invites"
+      lore: "&e%invites% &rinvites"
+    gotolobby: "Go to lobby"
+    visit: "Visit a realm"
+    manage:
+      item: "Manage realm settings"
+      delete:
+        title: "Delete realm"
+        lore: "Click here if you want to delete your realm"
+      renew:
+        title: "Renew"
+        lores:
+          created: "Created: &e%created%"
+          expires: "Expires: &e%expires%"
+guis:
+  realms:
+    deop: "Realm menu - DEOP"
+    op: "Realm menu - OP"
+    creator: "Realm menu - Creator"
+    manage: "Realm menu - Manage"
+    visit: "Ream menu - Visit"

@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PlayerRealms:jar">
+    <output-path>$USER_HOME$/Desktop/Folders/PlayerRealms/plugins</output-path>
+    <root id="archive" name="PlayerRealms.jar">
+      <element id="module-output" name="PlayerRealms" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/Folders/PlayerRealms/spigot.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
+    </root>
+  </artifact>
+</component>

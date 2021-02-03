@@ -1,0 +1,20 @@
+name: PlayerRealms
+main: cyber.playerrealms.Main
+description: Free Player Realms plugin
+version: 1.0
+author: Cyber
+depend: [ Multiverse-Core, PerWorldServer, PerWorldInventory ]
+api-version: 1.13
+commands:
+  realms:
+      description: Open realms management gui.
+      usage: /<command>
+      permission: playerrealms.realms
+  rc:
+    description: Realm commands.
+    usage: /<command> <subcommand> [arguments...]
+    permission: playerrealms.realms
+permissions:
+  playerrealms.realms:
+      description: Allows usage of plugin commands
+      default: true
