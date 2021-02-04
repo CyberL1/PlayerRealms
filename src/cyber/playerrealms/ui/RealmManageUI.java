@@ -1,6 +1,7 @@
 package cyber.playerrealms.ui;
 
 import cyber.playerrealms.Main;
+import cyber.playerrealms.utils.RealmVisibility;
 import cyber.playerrealms.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -8,7 +9,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 public class RealmManageUI {
 
@@ -25,12 +25,7 @@ public class RealmManageUI {
     public static Inventory GUI(Player p) {
         Inventory toReturn = Bukkit.createInventory(null, inv_rows, inventory_name);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MM, yyyy HH:mm:ss");
-
-        String creation_date = sdf.format(Utils.getRealmDataFile(Utils.getRealm(p)).getConfigurationSection("settings").get("created"));
-        String expiration_date = sdf.format(Utils.getRealmDataFile(Utils.getRealm(p)).getConfigurationSection("settings").get("expires"));
-
-        Utils.createItem(inv, "GOLD_BLOCK", 1, 21, Utils.getString("items.realms.manage.renew.title"), Utils.getString("items.realms.manage.renew.lores.created").replaceAll("%created%", creation_date), Utils.getString("items.realms.manage.renew.lores.expires").replaceAll("%expires%", expiration_date));
+        Utils.createItem(inv, "OAK_SIGN", 1, 21, Utils.getString("items.realms.manage.visibility.title"), Utils.getString("items.realms.manage.visibility.current").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(p))));
         Utils.createItem(inv, "TNT", 1, 23, Utils.getString("items.realms.manage.delete.title"), Utils.getString("items.realms.manage.delete.lore"));
         Utils.createItem(inv, "BARRIER", 1, 31, Utils.getString("items.close"));
 
@@ -45,9 +40,13 @@ public class RealmManageUI {
         } else if (clicked.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.delete.title"))) {
             p.closeInventory();
             Utils.deleteRealm(p, false);
-        } else if (clicked.getItemMeta().getDisplayName().equals((Utils.getString("items.realms.manage.renew.title")))) {
+        } else if (clicked.getItemMeta().getDisplayName().equals((Utils.getString("items.realms.manage.visibility.title")))) {
             p.closeInventory();
-            Utils.renewRealm(p);
+            if (Utils.getRealmVisibility(p) == RealmVisibility.VISIBLE) {
+                Utils.setRealmVisibility(p, RealmVisibility.NOTVISIBLE);
+            } else {
+                Utils.setRealmVisibility(p, RealmVisibility.VISIBLE);
+            }
         }
     }
 }

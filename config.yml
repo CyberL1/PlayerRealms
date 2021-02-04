@@ -68,11 +68,9 @@ items:
       delete:
         title: "Delete realm"
         lore: "Click here if you want to delete your realm"
-      renew:
-        title: "Renew"
-        lores:
-          created: "Created: &e%created%"
-          expires: "Expires: &e%expires%"
+      visibility:
+        title: "Change visibility"
+        current: "Current: &e%visibility%"
 guis:
   realms:
     deop: "Realm menu - DEOP"

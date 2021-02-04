@@ -45,8 +45,7 @@ public class RealmSelectorUI {
             p.closeInventory();
             Utils.createRealm(p);
         } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go"))) {
-            p.closeInventory();
-            Utils.gotoRealm(p.getName(), p);
+            Utils.gotoRealm(p, p);
         } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.visit"))) {
             new RealmVisitUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         } else if (clicked.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.item"))) {

@@ -4,7 +4,6 @@ import cyber.playerrealms.Main;
 import cyber.playerrealms.utils.PlayerPermission;
 import cyber.playerrealms.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,9 +20,5 @@ public class PlayerChangedWorldListener implements Listener {
     @EventHandler
     public void onWorldChange(PlayerChangedWorldEvent e) throws IOException {
         Player p = e.getPlayer();
-
-        if (!p.getWorld().getName().startsWith("realm-")) return;
-        YamlConfiguration file = Utils.getRealmDataFile(Utils.getRealm(p));
-        if (file.getConfigurationSection("players").getString(p.getUniqueId().toString()) == null) Utils.setPlayerPermission(p, PlayerPermission.DEOP);
     }
 }

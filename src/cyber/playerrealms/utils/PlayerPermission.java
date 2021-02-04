@@ -5,4 +5,3 @@ public final class PlayerPermission {
     public static final int OP = 1;
     public static final int CREATOR = 2;
 }
-

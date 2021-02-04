@@ -46,7 +46,7 @@ public class RealmDEOPUI {
             Utils.createRealm(p);
         } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go"))) {
             p.closeInventory();
-            Utils.gotoRealm(p.getName(), p);
+            Utils.gotoRealm(p, p);
         } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.gotolobby"))) {
             Utils.gotoLobby(p);
         } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.visit"))) {

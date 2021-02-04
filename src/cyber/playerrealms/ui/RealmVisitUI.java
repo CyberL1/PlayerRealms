@@ -3,6 +3,7 @@ package cyber.playerrealms.ui;
 import cyber.playerrealms.menu.Menu;
 import cyber.playerrealms.menu.PaginatedMenu;
 import cyber.playerrealms.menu.PlayerMenuUtility;
+import cyber.playerrealms.utils.RealmVisibility;
 import cyber.playerrealms.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -37,8 +38,7 @@ public class RealmVisitUI extends Menu {
         Player p = (Player) e.getWhoClicked();
 
         if (e.getCurrentItem().getType().equals(Material.OAK_SIGN)) {
-            e.getWhoClicked().closeInventory();
-            Utils.gotoRealm(e.getCurrentItem().getItemMeta().getDisplayName(), p);
+            Utils.gotoRealm(Bukkit.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName()), p);
         } else if (e.getCurrentItem().getType().equals(Material.BARRIER)) {
             p.closeInventory();
         } else if (e.getCurrentItem().getType().equals(Material.ARROW)) {
@@ -54,7 +54,8 @@ public class RealmVisitUI extends Menu {
                         .stream()
                         .filter(w ->
                                 w.getName().startsWith("realm-") &&
-                                        !w.getName().equals("realm-" + p.getName()))
+                                        !w.getName().equals("realm-" + p.getName()) &&
+                                        Utils.getAllRealms().getConfigurationSection("settings").getInt("visible") == RealmVisibility.VISIBLE)
                         .collect(Collectors.toList());
 
                 if (!((PaginatedMenu.index + 1) >= realms.size())) {
@@ -76,7 +77,8 @@ public class RealmVisitUI extends Menu {
                 .stream()
                 .filter(w ->
                         w.getName().startsWith("realm-") &&
-                                !w.getName().equals("realm-" + playerMenuUtility.getOwner().getName()))
+                                !w.getName().equals("realm-" + playerMenuUtility.getOwner().getName()) &&
+                                Utils.getAllRealms().getConfigurationSection("settings").getInt("visible") == RealmVisibility.VISIBLE)
                 .collect(Collectors.toList());
 
         if (!realms.isEmpty()) {
