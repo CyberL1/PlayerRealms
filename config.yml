@@ -27,7 +27,6 @@ messages:
       op: "[&4OP&f] %player% %msg%"
       creator: "[&cCREATOR&f] %player% %msg%"
     opening: "%prefix% Opening realm, please wait"
-    renewed: "%prefix% Realm renewed"
     deleted: "%prefix% Realm deleted"
   commands:
     rc:
