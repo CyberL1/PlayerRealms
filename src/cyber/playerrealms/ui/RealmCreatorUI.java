@@ -26,11 +26,11 @@ public class RealmCreatorUI extends Menu {
     public void handleMenu(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit"))) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit.name"))) {
             new RealmVisitUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
-        } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(Utils.getString("items.realms.gotolobby"))) {
+        } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(Utils.getString("items.realms.gotolobby.name"))) {
             Utils.gotoLobby(p);
-        } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.item"))) {
+        } else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.name"))) {
             new RealmManageUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         }
     }
@@ -38,9 +38,9 @@ public class RealmCreatorUI extends Menu {
     @Override
     public void setMenuItems() {
 
-        inventory.setItem(0, makeItem("ACACIA_DOOR", Utils.getString("items.realms.visit")));
-        inventory.setItem(2, makeItem("COMPASS", Utils.getString("items.realms.gotolobby")));
-        inventory.setItem(1, makeItem("REDSTONE_BLOCK", Utils.getString("items.realms.manage.item")));
+        inventory.setItem(0, makeItem(Utils.getString("items.realms.visit.item"), Utils.getString("items.realms.visit.name")));
+        inventory.setItem(1, makeItem(Utils.getString("items.realms.manage.item"), Utils.getString("items.realms.manage.name")));
+        inventory.setItem(2, makeItem(Utils.getString("items.realms.gotolobby.item"), Utils.getString("items.realms.gotolobby.name")));
 
     }
 }

@@ -21,10 +21,8 @@ public class Main extends JavaPlugin {
         this.getCommand("rc").setExecutor(new CommandManager());
 
         // Listeners
-        new PlayerChangedWorldListener(this);
         new PlayerChatListener(this);
         new MenuClickListener(this);
-
     }
 
     public static Main getInstance() {

@@ -36,20 +36,20 @@ public class RealmVisitUI extends Menu {
     @Override
     public void handleMenu(InventoryClickEvent e) throws IOException {
         Player p = (Player) e.getWhoClicked();
+        ItemStack item = e.getCurrentItem();
 
-        if (e.getCurrentItem().getType().equals(Material.OAK_SIGN)) {
+        if (item.getType().equals(Material.matchMaterial(Utils.getString("items.realms.visit.tpitem")))) {
             Utils.gotoRealm(Bukkit.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName()), p);
-        } else if (e.getCurrentItem().getType().equals(Material.BARRIER)) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.close"))) {
             p.closeInventory();
-        } else if (e.getCurrentItem().getType().equals(Material.ARROW)) {
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(Utils.getString("items.previous"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.previous"))) {
                 if (PaginatedMenu.page == 0) {
                     return;
                 } else {
                     PaginatedMenu.page = PaginatedMenu.page - 1;
                     super.open();
                 }
-            } else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(Utils.getString("items.next"))) {
+            } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.next"))) {
                 List<World> realms = Bukkit.getWorlds()
                         .stream()
                         .filter(w ->
@@ -66,7 +66,6 @@ public class RealmVisitUI extends Menu {
                 }
             }
         }
-    }
 
     @Override
     public void setMenuItems() {
@@ -86,7 +85,7 @@ public class RealmVisitUI extends Menu {
                 PaginatedMenu.index = PaginatedMenu.maxItemsPerPage * PaginatedMenu.page + i;
                 if (PaginatedMenu.index >= realms.size()) break;
                 if (realms.get(PaginatedMenu.index) != null) {
-                    ItemStack realmItem = new ItemStack(Material.OAK_SIGN, 1);
+                    ItemStack realmItem = new ItemStack(Material.matchMaterial(Utils.getString("items.realms.visit.tpitem")), 1);
                     ItemMeta realmMeta = realmItem.getItemMeta();
                     realmMeta.setDisplayName(realms.get(PaginatedMenu.index).getName().substring("realm-".length()));
 

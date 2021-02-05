@@ -32,13 +32,13 @@ public class RealmOPUI extends Menu {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCurrentItem();
 
-        if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.create"))) {
+        if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.create.item"))) {
             Utils.createRealm(p);
-        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go.item"))) {
             Utils.gotoRealm(p, p);
-        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.gotolobby"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.gotolobby.item"))) {
             Utils.gotoLobby(p);
-        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.visit"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.visit.item"))) {
             new RealmVisitUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         }
     }
@@ -47,14 +47,14 @@ public class RealmOPUI extends Menu {
     public void setMenuItems() {
         Player p = playerMenuUtility.getOwner();
 
-        inventory.setItem(2, makeItem("COMPASS", Utils.getString("items.realms.gotolobby")));
+        inventory.setItem(2, makeItem(Utils.getString("items.realms.gotolobby.item"), Utils.getString("items.realms.gotolobby.name")));
 
         if (!new File("realm-" + p.getName()).exists()) {
-            inventory.setItem(0, makeItem("DARK_OAK_DOOR", Main.getInstance().getConfig().getString("items.realms.create")));
+            inventory.setItem(0, makeItem(Utils.getString("items.realms.create.item"), Main.getInstance().getConfig().getString("items.realms.create.name")));
         } else {
-            inventory.setItem(0, makeItem("DARK_OAK_DOOR", Main.getInstance().getConfig().getString("items.realms.go")));
+            inventory.setItem(0, makeItem(Utils.getString("items.realms.go.item"), Main.getInstance().getConfig().getString("items.realms.go.name")));
         }
 
-        inventory.setItem(1, makeItem("ACACIA_DOOR", Main.getInstance().getConfig().getString("items.realms.visit")));
+        inventory.setItem(1, makeItem(Utils.getString("items.realms.visit.item"), Main.getInstance().getConfig().getString("items.realms.visit.name")));
     }
 }

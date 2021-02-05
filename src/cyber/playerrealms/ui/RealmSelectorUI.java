@@ -31,14 +31,14 @@ public class RealmSelectorUI extends Menu {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCurrentItem();
 
-        if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.create"))) {
+        if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.create.name"))) {
             p.closeInventory();
             Utils.createRealm(p);
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.go"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.go.name"))) {
             Utils.gotoRealm(p, p);
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.item"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.name"))) {
             new RealmManageUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit.name"))) {
             new RealmVisitUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         }
     }
@@ -48,14 +48,14 @@ public class RealmSelectorUI extends Menu {
 
         Player p = playerMenuUtility.getOwner();
         if (!new File("realm-" + p.getName()).exists()) {
-            inventory.setItem(0, makeItem("DARK_OAK_DOOR", Utils.getString("items.realms.create")));
+            inventory.setItem(0, makeItem(Utils.getString("items.realms.create.item"), Utils.getString("items.realms.create.name")));
             inventory.setItem(2, null);
         } else {
-            inventory.setItem(0, makeItem("DARK_OAK_DOOR", Utils.getString("items.realms.go")));
-            inventory.setItem(2, makeItem("REDSTONE_BLOCK", Utils.getString("items.realms.manage.item")));
+            inventory.setItem(0, makeItem(Utils.getString("items.realms.go.item"), Utils.getString("items.realms.go.name")));
+            inventory.setItem(2, makeItem(Utils.getString("items.realms.manage.item"), Utils.getString("items.realms.manage.name")));
         }
 
-        inventory.setItem(1, makeItem("ACACIA_DOOR", Utils.getString("items.realms.visit")));
+        inventory.setItem(1, makeItem(Utils.getString("items.realms.visit.item"), Utils.getString("items.realms.visit.name")));
 
     }
 }

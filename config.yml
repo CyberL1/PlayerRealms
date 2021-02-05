@@ -50,22 +50,40 @@ messages:
         set: "Set the weather to %weather%"
         error: "%weather% is not proper weather"
 items:
-  next: "Next"
-  close: "Close"
-  previous: "Previous"
+  next:
+    item: arrow
+    name: "Next"
+  close:
+    item: barrier
+    name: "Close"
+  previous:
+    item: arrow
+    name: "Previous"
   realms:
-    create: "Create a realm"
-    go: "Go to your realm"
-    gotolobby: "Go to lobby"
-    visit: "Visit a realm"
+    create:
+      item: dark_oak_door
+      name: "Create a realm"
+    go:
+      item: dark_oak_door
+      name: "Go to your realm"
+    gotolobby:
+      item: compass
+      name: "Go to lobby"
+    visit:
+      item: acacia_door
+      name: "Visit a realm"
+      tpitem: oak_sign
     manage:
-      item: "Manage realm settings"
+      item: redstone_block
+      name: "Manage realm settings"
       delete:
-        title: "Delete realm"
+        item: tnt
+        name: "Delete realm"
         lore: "Click here if you want to delete your realm"
       visibility:
-        title: "Change visibility"
-        current: "Current: &e%visibility%"
+        item: oak_sign
+        name: "Change visibility"
+        lore: "Current: &e%visibility%"
 guis:
   realms:
     selector: "Realm menu - Selector"

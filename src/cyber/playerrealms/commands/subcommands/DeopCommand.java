@@ -34,7 +34,7 @@ public class DeopCommand extends SubCommand {
                 p.sendMessage(Utils.getString("messages.commands.rc.deop.creator"));
                 return;
             }
-            Utils.setPlayerPermission(p, PlayerPermission.DEOP);
+            Utils.setPlayerPermission(p.getWorld().getName(), p, PlayerPermission.DEOP);
             p.sendMessage(Utils.getString("messages.commands.rc.deop.success").replaceAll("%taget%", args[1]));
         } catch (IOException e) {
             e.printStackTrace();

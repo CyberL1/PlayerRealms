@@ -42,10 +42,10 @@ public class Utils {
         return "realm-" + p.getName();
     }
 
-    public static void setPlayerPermission(Player p, int permission) throws IOException {
-        YamlConfiguration file = getRealmDataFile(getRealm(p));
+    public static void setPlayerPermission(String w, Player p, int permission) throws IOException {
+        YamlConfiguration file = getRealmDataFile(w);
         file.getConfigurationSection("players").set(p.getUniqueId().toString(), permission);
-        file.save(getRealmDataFileRaw(getRealm(p)));
+        file.save(getRealmDataFileRaw(w));
     }
 
     public static int getPlayerPermission(Player p) {
@@ -53,6 +53,8 @@ public class Utils {
     }
 
     public static void gotoRealm(Player playerRealm, Player playerToTp) throws IOException {
+        if (getRealmDataFile(getRealm(playerRealm)).getConfigurationSection("players").getString(playerToTp.getUniqueId().toString()) == null)
+            Utils.setPlayerPermission(getRealm(playerRealm), playerToTp, PlayerPermission.DEOP);
         if (getRealmDataFile(getRealm(playerRealm)).getConfigurationSection("settings").getBoolean("closed", true))
             openRealm(playerRealm);
         Bukkit.dispatchCommand(getConsole(), "mv tp " + playerToTp.getName() + " realm-" + playerRealm.getName());
@@ -94,7 +96,7 @@ public class Utils {
         file.createSection("players");
         file.save(getRealmDataFileRaw(getRealm(p)));
         setRealmVisibility(p, RealmVisibility.VISIBLE);
-        setPlayerPermission(p, PlayerPermission.CREATOR);
+        setPlayerPermission(getRealm(p), p, PlayerPermission.CREATOR);
 
         p.sendMessage(getString("messages.realms.creation.done"));
     }

@@ -31,11 +31,11 @@ public class RealmManageUI extends Menu {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCurrentItem();
 
-        if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.close"))) {
+        if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.close.name"))) {
             p.closeInventory();
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.delete.title"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.delete.name"))) {
             Utils.deleteRealm(p, false);
-        } else if (item.getItemMeta().getDisplayName().equals((Utils.getString("items.realms.manage.visibility.title")))) {
+        } else if (item.getItemMeta().getDisplayName().equals((Utils.getString("items.realms.manage.visibility.name")))) {
             p.closeInventory();
             if (Utils.getRealmVisibility(p) == RealmVisibility.VISIBLE) {
                 Utils.setRealmVisibility(p, RealmVisibility.NOTVISIBLE);
@@ -49,9 +49,9 @@ public class RealmManageUI extends Menu {
     public void setMenuItems() {
         Player p = playerMenuUtility.getOwner();
 
-        inventory.setItem(0, makeItem("OAK_SIGN", Utils.getString("items.realms.manage.visibility.title"), Utils.getString("items.realms.manage.visibility.current").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(p)))));
-        inventory.setItem(1, makeItem("TNT", Utils.getString("items.realms.manage.delete.title"), Utils.getString("items.realms.manage.delete.lore")));
-        inventory.setItem(8, makeItem("BARRIER", Utils.getString("items.close")));
+        inventory.setItem(0, makeItem(Utils.getString("items.realms.manage.visibility.item"), Utils.getString("items.realms.manage.visibility.name"), Utils.getString("items.realms.manage.visibility.lore").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(p)))));
+        inventory.setItem(1, makeItem(Utils.getString("items.realms.manage.delete.item"), Utils.getString("items.realms.manage.delete.name"), Utils.getString("items.realms.manage.delete.lore")));
+        inventory.setItem(8, makeItem(Utils.getString("items.close.item"), Utils.getString("items.close.name")));
 
     }
 }

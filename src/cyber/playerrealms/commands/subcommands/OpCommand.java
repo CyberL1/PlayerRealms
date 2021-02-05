@@ -33,7 +33,7 @@ public class OpCommand extends SubCommand {
                 p.sendMessage(Utils.getString("messages.commands.rc.op.creator"));
                 return;
             }
-            Utils.setPlayerPermission(p, PlayerPermission.OP);
+            Utils.setPlayerPermission(p.getWorld().getName(), p, PlayerPermission.OP);
             p.sendMessage(Utils.getString("messages.commands.rc.op.success").replaceAll("%target%", args[1]));
         } catch (IOException e) {
             e.printStackTrace();
