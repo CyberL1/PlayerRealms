@@ -21,7 +21,7 @@ public class PlayerInteractListener implements Listener {
 
         if (!p.getWorld().getName().equals(Utils.getString("lobby.world"))) return;
         if (Utils.getString("lobby.protection.interact").equals("true")) {
-            if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (e.getAction() == Action.LEFT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                 p.sendMessage(Utils.getString("messages.lobbyprotection.interact"));
                 e.setCancelled(true);
             }

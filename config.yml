@@ -1,72 +1,71 @@
 lobby:
   world: "world"
   protection:
-    build: true
     chat: false
     damage: true
     drop: true
     pickup: true
     interact: true
 messages:
+  prefix: "&6&lPlayerRealms >>&r"
   lobbyprotection:
-    build: "Build is disabled in lobby"
-    chat: "Chating is disabled in lobby"
-    damage: "Dealing damage is disabled in lobby"
-    drop: "Dropping items is disabled in lobby"
-    interact: "Intearacting is disabled in lobby"
+    chat: "%prefix% Chating is disabled in lobby"
+    damage: "%prefix% Dealing damage is disabled in lobby"
+    drop: "%prefix% Dropping items is disabled in lobby"
+    interact: "%prefix% Intearacting is disabled in lobby"
   logs:
     reload:
-      done: "Plugin config reloaded"
+      done: "%prefix% Plugin config reloaded"
     execute:
-      playeronly: "Only player can execute this command"
+      playeronly: "%prefix% Only player can execute this command"
   realms:
     creation:
-      started: "Realm creation has stared. May lag"
-      done: "Done. Use /realms to go to your realm"
+      started: "%prefix% Realm creation has stared. May lag"
+      done: "%prefix% Done. Use /realms to go to your realm"
     chat:
       deop: "[&8PLAYER&f] %player% %msg%"
       op: "[&4OP&f] %player% %msg%"
       creator: "[&cCREATOR&f] %player% %msg%"
-    opening: "Opening realm, please wait"
-    renewed: "Realm renewed"
-    deleted: "Realm deleted"
+    opening: "%prefix% Opening realm, please wait"
+    renewed: "%prefix% Realm renewed"
+    deleted: "%prefix% Realm deleted"
   commands:
     rc:
       errors:
-        realmonly: "This command won't work outsite of realm"
-        nopermission: "Insufficent permission"
+        realmonly: "%prefix% This command won't work outsite of realm"
+        nopermission: "%prefix% Insufficent permission"
       noargs:
         header: "&e---------- &rHelp: Realm &e----------"
         description: "&7Below is a list of all Realm commands:"
         body: "&6/rc %command%: &r%description%"
       gamemode:
-        set: "Set own game mode to %gamemode% Mode"
-        error: "%gamemode% is not proper game mode"
+        set: "%prefix% Set own game mode to %gamemode% Mode"
+        error: "%prefix% %gamemode% is not proper game mode"
       op:
-        creator: "You cannot op realm creator"
-        success: "Made %target% a server operator"
+        creator: "%prefix% You cannot op realm creator"
+        success: "%prefix% Made %target% a server operator"
       deop:
-        creator: "You cannot deop realm creator"
-        success: "Made %target% no longer a server operator"
+        creator: "%prefix% You cannot deop realm creator"
+        success: "%prefix% Made %target% no longer a server operator"
       time:
-        set: "Set time to %time%"
-        error: "%time% is not proper time value"
+        set: "%prefix% Set time to %time%"
+        error: "%prefix% %time% is not proper time value"
       difficulty:
-        set: "The difficulcty has been set to %difficulty%"
-        error: "%difficulty% is not propper difficulty mode"
+        set: "%prefix% The difficulcty has been set to %difficulty%"
+        error: "%prefix% %difficulty% is not propper difficulty mode"
       pvp:
-        set: "Set pvp mode to %mode%"
-        error: "%mode% is not proper pvp mode"
+        set: "%prefix% Set pvp mode to %mode%"
+        error: "%prefix% %mode% is not proper pvp mode"
       defaultgamemode:
-        set: "The default game mode is now %gamemode% Mode"
-        error: "%gamemode% is not proper game mode"
+        set: "%prefix% The default game mode is now %gamemode% Mode"
+        error: "%prefix% %gamemode% is not proper game mode"
       close:
-        success: "Realm closed"
+        success: "%prefix% Realm closed"
       clear:
-        success: "Cleared %target%'s inventory"
+        success: "%prefix% Cleared %target%'s inventory"
       weather:
-        set: "Set the weather to %weather%"
-        error: "%weather% is not proper weather"
+        set: "%prefix% Set the weather to %weather%"
+        error: "%prefix% %weather% is not proper weather"
 items:
   next:
     item: arrow

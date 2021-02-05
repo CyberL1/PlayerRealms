@@ -23,7 +23,7 @@ public class Utils {
     }
 
     public static String getString(String s) {
-        return colorize(Main.getInstance().getConfig().getString(s));
+        return colorize(Main.getInstance().getConfig().getString(s).replaceAll("%prefix%", Main.getInstance().getConfig().getString(colorize("messages.prefix"))));
     }
 
     public static File getRealmDataFolder() {
