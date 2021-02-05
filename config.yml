@@ -1,6 +1,11 @@
 lobby:
   world: "world"
 messages:
+  logs:
+    reload:
+      done: "Plugin config reloaded"
+    execute:
+      playeronly: "Only player can execute this command"
   realms:
     creation:
       started: "Realm creation has stared. May lag"

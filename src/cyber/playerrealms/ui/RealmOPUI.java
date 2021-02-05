@@ -33,8 +33,10 @@ public class RealmOPUI extends Menu {
         ItemStack item = e.getCurrentItem();
 
         if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.create.item"))) {
+            p.closeInventory();
             Utils.createRealm(p);
         } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go.item"))) {
+            p.closeInventory();
             Utils.gotoRealm(p, p);
         } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.gotolobby.item"))) {
             Utils.gotoLobby(p);
