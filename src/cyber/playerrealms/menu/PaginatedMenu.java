@@ -13,8 +13,8 @@ public abstract class PaginatedMenu extends Menu {
     }
 
     public static void addMenuBorder() {
-        inventory.setItem(48, makeItem("ARROW", Utils.getString("items.previous")));
-        inventory.setItem(49, makeItem("BARRIER", Utils.getString("items.close")));
-        inventory.setItem(50, makeItem("ARROW", Utils.getString("items.next")));
+        inventory.setItem(48, makeItem("ARROW", Utils.getString("items.previous.name")));
+        inventory.setItem(49, makeItem("BARRIER", Utils.getString("items.close.name")));
+        inventory.setItem(50, makeItem("ARROW", Utils.getString("items.next.name")));
     }
 }
