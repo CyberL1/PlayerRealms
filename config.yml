@@ -6,12 +6,14 @@ lobby:
     damage: true
     drop: true
     pickup: true
+    interact: true
 messages:
   lobbyprotection:
     build: "Build is disabled in lobby"
     chat: "Chating is disabled in lobby"
     damage: "Dealing damage is disabled in lobby"
     drop: "Dropping items is disabled in lobby"
+    interact: "Intearacting is disabled in lobby"
   logs:
     reload:
       done: "Plugin config reloaded"
