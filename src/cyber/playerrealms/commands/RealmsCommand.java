@@ -1,5 +1,6 @@
 package cyber.playerrealms.commands;
 
+import cyber.playerrealms.menu.PlayerMenuUtility;
 import cyber.playerrealms.ui.RealmCreatorUI;
 import cyber.playerrealms.ui.RealmDEOPUI;
 import cyber.playerrealms.ui.RealmOPUI;
@@ -17,14 +18,15 @@ public class RealmsCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            if (!p.getWorld().getName().startsWith("realm-")) p.openInventory(RealmSelectorUI.GUI(p));
+            if (!p.getWorld().getName().startsWith("realm-"))
+                new RealmSelectorUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
             if (p.getWorld().getName().startsWith("realm-")) {
                 if (Utils.getPlayerPermission(p) == PlayerPermission.CREATOR) {
-                    p.openInventory(RealmCreatorUI.GUI(p));
+                    new RealmCreatorUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
                 } else if (Utils.getPlayerPermission(p) == PlayerPermission.OP) {
-                    p.openInventory(RealmOPUI.GUI(p));
+                    new RealmOPUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
                 } else if (Utils.getPlayerPermission(p) == PlayerPermission.DEOP) {
-                    p.openInventory(RealmDEOPUI.GUI(p));
+                    new RealmDEOPUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
                 }
             }
         }

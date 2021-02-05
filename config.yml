@@ -54,13 +54,8 @@ items:
   close: "Close"
   previous: "Previous"
   realms:
-    selector: "Select realm"
-    manu: "Realm menu"
     create: "Create a realm"
     go: "Go to your realm"
-    invites:
-      title: "Realm invites"
-      lore: "&e%invites% &rinvites"
     gotolobby: "Go to lobby"
     visit: "Visit a realm"
     manage:
@@ -73,6 +68,7 @@ items:
         current: "Current: &e%visibility%"
 guis:
   realms:
+    selector: "Realm menu - Selector"
     deop: "Realm menu - DEOP"
     op: "Realm menu - OP"
     creator: "Realm menu - Creator"

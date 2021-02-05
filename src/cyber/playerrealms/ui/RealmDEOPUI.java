@@ -1,56 +1,60 @@
 package cyber.playerrealms.ui;
 
 import cyber.playerrealms.Main;
+import cyber.playerrealms.menu.Menu;
 import cyber.playerrealms.menu.PlayerMenuUtility;
 import cyber.playerrealms.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
 
-public class RealmDEOPUI {
+public class RealmDEOPUI extends Menu {
 
-    public static Inventory inv;
-    public static String inventory_name;
-    public static int inv_rows = 54;
-
-    public static void Initialize() {
-        inventory_name = Utils.getString("guis.realms.deop");
-
-        inv = Bukkit.createInventory(null, inv_rows);
+    public RealmDEOPUI(PlayerMenuUtility playerMenuUtility) {
+        super(playerMenuUtility);
     }
 
-    public static Inventory GUI(Player p) {
-        Inventory toReturn = Bukkit.createInventory(null, inv_rows, inventory_name);
-
-        Utils.createItem(inv, "COMPASS", 1, 4, Utils.getString("items.realms.gotolobby"));
-
-        if (!new File("realm-" + p.getName()).exists()) {
-            Utils.createItem(inv, "DARK_OAK_DOOR", 1, 21, Main.getInstance().getConfig().getString("items.realms.create"));
-        } else {
-            Utils.createItem(inv, "DARK_OAK_DOOR", 1, 21, Main.getInstance().getConfig().getString("items.realms.go"));
-        }
-
-        Utils.createItem(inv, "ACACIA_DOOR", 1, 23, Main.getInstance().getConfig().getString("items.realms.visit"));
-
-        toReturn.setContents(inv.getContents());
-        return toReturn;
+    @Override
+    public String getMenuName() {
+        return Utils.getString("guis.realms.deop");
     }
 
-    public static void clicked(Player p, int slot, ItemStack clicked, Inventory inv) throws IOException {
-        if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.create"))) {
-            p.closeInventory();
+    @Override
+    public int getSlots() {
+        return 9;
+    }
+
+    @Override
+    public void handleMenu(InventoryClickEvent e) throws IOException {
+        Player p = (Player) e.getWhoClicked();
+        ItemStack item = e.getCurrentItem();
+
+        if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.create"))) {
             Utils.createRealm(p);
-        } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go"))) {
-            p.closeInventory();
+        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.go"))) {
             Utils.gotoRealm(p, p);
-        } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.gotolobby"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.gotolobby"))) {
             Utils.gotoLobby(p);
-        } else if (clicked.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.visit"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Main.getInstance().getConfig().getString("items.realms.visit"))) {
             new RealmVisitUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         }
+    }
+
+    @Override
+    public void setMenuItems() {
+        Player p = playerMenuUtility.getOwner();
+
+        inventory.setItem(2, makeItem("COMPASS", Utils.getString("items.realms.gotolobby")));
+
+        if (!new File("realm-" + p.getName()).exists()) {
+            inventory.setItem(0, makeItem("DARK_OAK_DOOR", Main.getInstance().getConfig().getString("items.realms.create")));
+        } else {
+            inventory.setItem(0, makeItem("DARK_OAK_DOOR", Main.getInstance().getConfig().getString("items.realms.go")));
+        }
+
+        inventory.setItem(1, makeItem("ACACIA_DOOR", Main.getInstance().getConfig().getString("items.realms.visit")));
     }
 }

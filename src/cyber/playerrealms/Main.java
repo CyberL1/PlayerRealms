@@ -21,19 +21,9 @@ public class Main extends JavaPlugin {
         this.getCommand("rc").setExecutor(new CommandManager());
 
         // Listeners
-        new InventoryClickListener(this);
         new PlayerChangedWorldListener(this);
         new PlayerChatListener(this);
         new MenuClickListener(this);
-
-        // Main UIs
-        RealmSelectorUI.Initialize();
-        RealmOPUI.Initialize();
-        RealmDEOPUI.Initialize();
-        RealmCreatorUI.Initialize();
-
-        // Manage UIs
-        RealmManageUI.Initialize();
 
     }
 
