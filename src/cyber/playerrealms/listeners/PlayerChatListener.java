@@ -19,6 +19,14 @@ public class PlayerChatListener implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         String m = e.getMessage();
+
+        if (p.getWorld().getName().equals(Utils.getString("lobby.world"))) {
+            if (!Utils.getString("lobby.protection.chat").equals("true")) {
+                p.sendMessage(Utils.getString("messages.lobbyprotection.chat"));
+                e.setCancelled(true);
+            }
+        }
+
         if (!p.getWorld().getName().startsWith("realm-")) return;
 
         if (Utils.getPlayerPermission(p) == PlayerPermission.DEOP) {

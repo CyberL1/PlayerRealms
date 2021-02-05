@@ -1,6 +1,11 @@
 lobby:
   world: "world"
+  protection:
+    interact: true
+    chat: false
 messages:
+  lobbyprotection:
+    chat: "Chat is disabled for lobby"
   logs:
     reload:
       done: "Plugin config reloaded"
