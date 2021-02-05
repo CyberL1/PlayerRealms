@@ -23,6 +23,12 @@ public class Main extends JavaPlugin {
         // Listeners
         new PlayerChatListener(this);
         new MenuClickListener(this);
+        new BlockBreakListener(this);
+        new BlockPlaceListener(this);
+        new EntityDamageListener(this);
+        new PlayerDropItemListener(this);
+        new EntityPickupItemListener(this);
+        new PlayerInteractListener(this);
     }
 
     public static Main getInstance() {

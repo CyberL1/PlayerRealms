@@ -1,11 +1,17 @@
 lobby:
   world: "world"
   protection:
-    interact: true
+    build: true
     chat: false
+    damage: true
+    drop: true
+    pickup: true
 messages:
   lobbyprotection:
-    chat: "Chat is disabled for lobby"
+    build: "Build is disabled in lobby"
+    chat: "Chating is disabled in lobby"
+    damage: "Dealing damage is disabled in lobby"
+    drop: "Dropping items is disabled in lobby"
   logs:
     reload:
       done: "Plugin config reloaded"

@@ -21,7 +21,7 @@ public class PlayerChatListener implements Listener {
         String m = e.getMessage();
 
         if (p.getWorld().getName().equals(Utils.getString("lobby.world"))) {
-            if (!Utils.getString("lobby.protection.chat").equals("true")) {
+            if (Utils.getString("lobby.protection.chat").equals("true")) {
                 p.sendMessage(Utils.getString("messages.lobbyprotection.chat"));
                 e.setCancelled(true);
             }
