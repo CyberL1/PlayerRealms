@@ -42,10 +42,10 @@ messages:
         error: "%prefix% %gamemode% is not proper game mode"
       op:
         creator: "%prefix% You cannot op realm creator"
-        success: "%prefix% Made %target% a server operator"
+        success: "%prefix% Made %player% a server operator"
       deop:
         creator: "%prefix% You cannot deop realm creator"
-        success: "%prefix% Made %target% no longer a server operator"
+        success: "%prefix% Made %player% no longer a server operator"
       time:
         set: "%prefix% Set time to %time%"
         error: "%prefix% %time% is not proper time value"
@@ -61,7 +61,7 @@ messages:
       close:
         success: "%prefix% Realm closed"
       clear:
-        success: "%prefix% Cleared %target%'s inventory"
+        success: "%prefix% Cleared %player%'s inventory"
       weather:
         set: "%prefix% Set the weather to %weather%"
         error: "%prefix% %weather% is not proper weather"

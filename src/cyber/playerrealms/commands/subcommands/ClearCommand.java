@@ -28,10 +28,10 @@ public class ClearCommand extends SubCommand {
     public void perform(Player p, String[] args) {
         if (args.length != 2) {
             p.getInventory().clear();
-            p.sendMessage(Utils.getString("messages.commands.rc.clear.success").replaceAll("%target%", p.getName()));
+            p.sendMessage(Utils.getString("messages.commands.rc.clear.success").replaceAll("%player%", p.getName()));
         } else {
             Bukkit.getPlayer(args[1]).getInventory().clear();
-            p.sendMessage(Utils.getString("messages.commands.rc.clear.success").replaceAll("%target%", args[1]));
+            p.sendMessage(Utils.getString("messages.commands.rc.clear.success").replaceAll("%player%", args[1]));
         }
     }
 
