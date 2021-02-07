@@ -3,7 +3,6 @@ package cyber.playerrealms;
 import cyber.playerrealms.commands.CommandManager;
 import cyber.playerrealms.commands.RealmsCommand;
 import cyber.playerrealms.listeners.*;
-import cyber.playerrealms.ui.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
