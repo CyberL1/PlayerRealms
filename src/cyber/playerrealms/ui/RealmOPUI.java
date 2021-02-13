@@ -31,15 +31,15 @@ public class RealmOPUI extends Menu {
         Player p = (Player) e.getWhoClicked();
         ItemStack item = e.getCurrentItem();
 
-        if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.create.item"))) {
+        if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.create.name"))) {
             p.closeInventory();
             Utils.createRealm(p);
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.go.item"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.go.name"))) {
             p.closeInventory();
             Utils.gotoRealm(p, p);
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.gotolobby.item"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.gotolobby.name"))) {
             Utils.gotoLobby(p);
-        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit.item"))) {
+        } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit.name"))) {
             new RealmVisitUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         }
     }
