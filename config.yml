@@ -103,8 +103,8 @@ items:
 guis:
   realms:
     selector: "Realm menu - Selector"
-    deop: "Realm menu - DEOP"
-    op: "Realm menu - OP"
-    creator: "Realm menu - Creator"
-    manage: "Realm menu - Manage"
+    deop: "&8Realm menu - DEOP"
+    op: "&4Realm menu - OP"
+    creator: "&cRealm menu - Creator"
+    manage: "&eRealm menu - Manage"
     visit: "Ream menu - Visit"

@@ -49,12 +49,10 @@ public class Utils {
     }
 
     public static int getPlayerPermission(Player p) {
-        return getRealmDataFile(getRealm(p)).getConfigurationSection("players").getInt(p.getUniqueId().toString());
+        return getRealmDataFile(p.getWorld().getName()).getConfigurationSection("players").getInt(p.getUniqueId().toString());
     }
 
     public static void gotoRealm(Player playerRealm, Player playerToTp) throws IOException {
-        if (getRealmDataFile(getRealm(playerRealm)).getConfigurationSection("players").getString(playerToTp.getUniqueId().toString()) == null)
-            Utils.setPlayerPermission(getRealm(playerRealm), playerToTp, PlayerPermission.DEOP);
         if (getRealmDataFile(getRealm(playerRealm)).getConfigurationSection("settings").getBoolean("closed", true))
             openRealm(playerRealm);
         Bukkit.dispatchCommand(getConsole(), "mv tp " + playerToTp.getName() + " realm-" + playerRealm.getName());
