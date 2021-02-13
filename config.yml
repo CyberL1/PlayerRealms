@@ -100,6 +100,9 @@ items:
         item: oak_sign
         name: "Change visibility"
         lore: "Current: &e%visibility%"
+      close:
+        item: barrier
+        name: "Close realm"
 guis:
   realms:
     selector: "Realm menu - Selector"

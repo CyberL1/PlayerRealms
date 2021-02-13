@@ -24,7 +24,6 @@ public class CommandManager implements TabExecutor {
         subcommands.add(new DifficultyCommand());
         subcommands.add(new PvpCommand());
         subcommands.add(new DefaultgamemodeCommand());
-        subcommands.add(new CloseCommand());
         subcommands.add(new ClearCommand());
         subcommands.add(new WeatherCommand());
     }
