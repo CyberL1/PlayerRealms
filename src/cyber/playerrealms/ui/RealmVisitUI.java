@@ -55,7 +55,7 @@ public class RealmVisitUI extends Menu {
                         .filter(w ->
                                 w.getName().startsWith("realm-") &&
                                         !w.getName().equals("realm-" + p.getName()) &&
-                                        Utils.getAllRealms().getConfigurationSection("settings").getInt("visible") == RealmVisibility.VISIBLE)
+                                        Utils.getRealmVisibility(w.getName()) == RealmVisibility.VISIBLE)
                         .collect(Collectors.toList());
 
                 if (!((PaginatedMenu.index + 1) >= realms.size())) {
@@ -77,7 +77,7 @@ public class RealmVisitUI extends Menu {
                 .filter(w ->
                         w.getName().startsWith("realm-") &&
                                 !w.getName().equals("realm-" + playerMenuUtility.getOwner().getName()) &&
-                                Utils.getAllRealms().getConfigurationSection("settings").getInt("visible") == RealmVisibility.VISIBLE)
+                                Utils.getRealmVisibility(w.getName()) == RealmVisibility.VISIBLE)
                 .collect(Collectors.toList());
 
         if (!realms.isEmpty()) {

@@ -62,21 +62,8 @@ public class Utils {
         Bukkit.dispatchCommand(getConsole(), "mv tp " + p.getName() + " " + getString("lobby.world"));
     }
 
-    public static YamlConfiguration getAllRealms() {
-        YamlConfiguration config = new YamlConfiguration();
-        File[] files = getRealmDataFolder().listFiles();
-        try {
-            for (File file : files) {
-                config.load(file);
-            }
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        return config;
-    }
-
-    public static int getRealmVisibility(Player p) {
-        return getRealmDataFile(getRealm(p)).getConfigurationSection("settings").getInt("visible");
+    public static int getRealmVisibility(String w) {
+        return getRealmDataFile(w).getConfigurationSection("settings").getInt("visible");
     }
 
     public static void setRealmVisibility(Player p, int visibility) throws IOException {
