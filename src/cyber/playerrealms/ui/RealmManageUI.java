@@ -53,7 +53,7 @@ public class RealmManageUI extends Menu {
     public void setMenuItems() {
         Player p = playerMenuUtility.getOwner();
 
-        inventory.setItem(0, makeItem(Utils.getString("items.realms.manage.visibility.item"), Utils.getString("items.realms.manage.visibility.name"), Utils.getString("items.realms.manage.visibility.lore").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(p.getWorld().getName())))));
+        inventory.setItem(0, makeItem(Utils.getString("items.realms.manage.visibility.item"), Utils.getString("items.realms.manage.visibility.name"), Utils.getString("items.realms.manage.visibility.lore").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(Utils.getRealm(p))))));
         inventory.setItem(1, makeItem(Utils.getString("items.realms.manage.delete.item"), Utils.getString("items.realms.manage.delete.name"), Utils.getString("items.realms.manage.delete.lore")));
         inventory.setItem(2, makeItem(Utils.getString("items.realms.manage.close.item"), Utils.getString("items.realms.manage.close.name")));
         inventory.setItem(8, makeItem(Utils.getString("items.close.item"), Utils.getString("items.close.name")));
