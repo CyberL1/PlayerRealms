@@ -1,6 +1,5 @@
 package cyber.playerrealms.commands;
 
-import cyber.playerrealms.Main;
 import cyber.playerrealms.menu.PlayerMenuUtility;
 import cyber.playerrealms.ui.RealmCreatorUI;
 import cyber.playerrealms.ui.RealmDEOPUI;
@@ -23,22 +22,15 @@ public class RealmsCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
 
-            if (args.length == 0) {
-                if (!p.getWorld().getName().startsWith("realm-"))
-                    new RealmSelectorUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
-                if (p.getWorld().getName().startsWith("realm-")) {
-                    if (Utils.getPlayerPermission(p) == PlayerPermission.CREATOR) {
-                        new RealmCreatorUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
-                    } else if (Utils.getPlayerPermission(p) == PlayerPermission.OP) {
-                        new RealmOPUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
-                    } else if (Utils.getPlayerPermission(p) == PlayerPermission.DEOP) {
-                        new RealmDEOPUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
-                    }
-                }
-            } else {
-                if (args[0].equals("reload")) {
-                    Main.getInstance().reloadConfig();
-                    p.sendMessage(Utils.getString("messages.logs.reload.done"));
+            if (!p.getWorld().getName().startsWith("realm-"))
+                new RealmSelectorUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
+            if (p.getWorld().getName().startsWith("realm-")) {
+                if (Utils.getPlayerPermission(p) == PlayerPermission.CREATOR) {
+                    new RealmCreatorUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
+                } else if (Utils.getPlayerPermission(p) == PlayerPermission.OP) {
+                    new RealmOPUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
+                } else if (Utils.getPlayerPermission(p) == PlayerPermission.DEOP) {
+                    new RealmDEOPUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
                 }
             }
         } else {

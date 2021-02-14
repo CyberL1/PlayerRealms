@@ -14,7 +14,14 @@ commands:
     description: Realm commands.
     usage: /<command> <subcommand> [arguments...]
     permission: playerrealms.realms
+  pra:
+    description: PlayerRealms admin command.
+    usage: /<command>
+    permission: playerrealms.admin
 permissions:
   playerrealms.realms:
-      description: Allows usage of plugin commands
+      description: Allows usage of plugin player commands
       default: true
+  playerrealms.admin:
+    description: Allows usage of plugin admin commands
+    default: op

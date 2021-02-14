@@ -75,6 +75,10 @@ items:
   previous:
     item: arrow
     name: "Previous"
+  admin:
+    reload:
+      item: compass
+      name: "Reload config"
   realms:
     create:
       item: dark_oak_door
@@ -110,4 +114,5 @@ guis:
     op: "&4Realm menu - OP"
     creator: "&cRealm menu - Creator"
     manage: "&eRealm menu - Manage"
-    visit: "Ream menu - Visit"
+    visit: "Realm menu - Visit"
+    admin: "PlayerRealms - Admin menu"

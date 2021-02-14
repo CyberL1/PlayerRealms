@@ -1,6 +1,7 @@
 package cyber.playerrealms;
 
 import cyber.playerrealms.commands.CommandManager;
+import cyber.playerrealms.commands.PraCommand;
 import cyber.playerrealms.commands.RealmsCommand;
 import cyber.playerrealms.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,6 +19,7 @@ public class Main extends JavaPlugin {
         // Commands
         this.getCommand("realms").setExecutor(new RealmsCommand());
         this.getCommand("rc").setExecutor(new CommandManager());
+        this.getCommand("pra").setExecutor(new PraCommand());
 
         // Listeners
         new PlayerChatListener(this);
