@@ -55,7 +55,7 @@ messages:
       difficulty:
         set: "%prefix% The difficulcty has been set to %difficulty%"
         error: "%prefix% %difficulty% is not propper difficulty mode"
-        check: "%prefix% The difficilty is %difficulty%"
+        check: "%prefix% The difficulty is %difficulty%"
       pvp:
         set: "%prefix% Set pvp mode to %pvp%"
         error: "%prefix% %pvp% is not proper pvp mode"
