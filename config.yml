@@ -53,7 +53,7 @@ messages:
         error: "%prefix% %time% is not proper time value"
         check: "%prefix% The time is %time%"
       difficulty:
-        set: "%prefix% The difficulcty has been set to %difficulty%"
+        set: "%prefix% The difficulty has been set to %difficulty%"
         error: "%prefix% %difficulty% is not propper difficulty mode"
         check: "%prefix% The difficulty is %difficulty%"
       pvp:
