@@ -7,15 +7,15 @@ depend: [ Multiverse-Core, PerWorldServer, PerWorldInventory ]
 api-version: 1.16
 commands:
   realms:
-      description: Open realms management gui.
+      description: Opens plugin player ui.
       usage: /<command>
       permission: playerrealms.realms
   rc:
-    description: Realm commands.
+    description: Allows you to execute commands on relam.
     usage: /<command> <subcommand> [arguments...]
     permission: playerrealms.realms
   pra:
-    description: PlayerRealms admin command.
+    description: Opens plugin admin ui.
     usage: /<command>
     permission: playerrealms.admin
 permissions:
