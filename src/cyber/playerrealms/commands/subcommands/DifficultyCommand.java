@@ -2,6 +2,7 @@ package cyber.playerrealms.commands.subcommands;
 
 import cyber.playerrealms.commands.SubCommand;
 import cyber.playerrealms.utils.Utils;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -28,26 +29,30 @@ public class DifficultyCommand extends SubCommand {
     @Override
     public void perform(Player p, String[] args) {
 
-        switch (args[1]) {
-            case "easy":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff easy " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Easy"));
-                break;
-            case "hard":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff hard " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Hard"));
-                break;
-            case "normal":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff normal " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Normal"));
-                break;
-            case "peaceful":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff peaceful " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Peaceful"));
-                break;
-            default:
-                p.sendMessage(Utils.getString("messages.commands.rc.difficulty.error").replaceAll("%difficulty%", args[1]));
-                break;
+        if (args.length == 1) {
+            p.sendMessage(Utils.getString("messages.commands.rc.difficulty.check").replaceAll("%difficulty%", WordUtils.capitalize(String.valueOf(p.getWorld().getDifficulty()).toLowerCase())));
+        } else {
+            switch (args[1]) {
+                case "easy":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff easy " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Easy"));
+                    break;
+                case "hard":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff hard " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Hard"));
+                    break;
+                case "normal":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff normal " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Normal"));
+                    break;
+                case "peaceful":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff peaceful " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Peaceful"));
+                    break;
+                default:
+                    p.sendMessage(Utils.getString("messages.commands.rc.difficulty.error").replaceAll("%difficulty%", args[1]));
+                    break;
+            }
         }
     }
 

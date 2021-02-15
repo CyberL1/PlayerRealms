@@ -28,15 +28,20 @@ public class OpCommand extends SubCommand {
 
     @Override
     public void perform(Player p, String[] args) {
-        try {
-            if (Utils.getPlayerPermission(Bukkit.getPlayer(args[1])) == PlayerPermission.CREATOR) {
-                p.sendMessage(Utils.getString("messages.commands.rc.op.creator"));
-                return;
+
+        if (args.length == 1) {
+            p.sendMessage(Utils.getString("messages.commands.rc.errors.noargs"));
+        } else {
+            try {
+                if (Utils.getPlayerPermission(Bukkit.getPlayer(args[1])) == PlayerPermission.CREATOR) {
+                    p.sendMessage(Utils.getString("messages.commands.rc.op.creator"));
+                    return;
+                }
+                Utils.setPlayerPermission(p.getWorld().getName(), Bukkit.getPlayer(args[1]), PlayerPermission.OP);
+                p.sendMessage(Utils.getString("messages.commands.rc.op.success").replaceAll("%player%", args[1]));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            Utils.setPlayerPermission(p.getWorld().getName(), Bukkit.getPlayer(args[1]), PlayerPermission.OP);
-            p.sendMessage(Utils.getString("messages.commands.rc.op.success").replaceAll("%player%", args[1]));
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

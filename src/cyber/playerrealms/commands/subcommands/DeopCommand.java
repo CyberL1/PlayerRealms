@@ -29,15 +29,19 @@ public class DeopCommand extends SubCommand {
     @Override
     public void perform(Player p, String[] args) {
 
-        try {
-            if (Utils.getPlayerPermission(Bukkit.getPlayer(args[1])) == PlayerPermission.CREATOR) {
-                p.sendMessage(Utils.getString("messages.commands.rc.deop.creator"));
-                return;
+        if (args.length == 1) {
+            p.sendMessage(Utils.getString("messages.commands.rc.errors.noargs"));
+        } else {
+            try {
+                if (Utils.getPlayerPermission(Bukkit.getPlayer(args[1])) == PlayerPermission.CREATOR) {
+                    p.sendMessage(Utils.getString("messages.commands.rc.deop.creator"));
+                    return;
+                }
+                Utils.setPlayerPermission(p.getWorld().getName(), Bukkit.getPlayer(args[1]), PlayerPermission.DEOP);
+                p.sendMessage(Utils.getString("messages.commands.rc.deop.success").replaceAll("%player%", args[1]));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            Utils.setPlayerPermission(p.getWorld().getName(), Bukkit.getPlayer(args[1]), PlayerPermission.DEOP);
-            p.sendMessage(Utils.getString("messages.commands.rc.deop.success").replaceAll("%player%", args[1]));
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

@@ -28,25 +28,29 @@ public class DefaultgamemodeCommand extends SubCommand {
     @Override
     public void perform(Player p, String[] args) {
 
-        switch (args[1]) {
-            case "survival":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode survival " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Survival"));
-                break;
-            case "creative":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode creative " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Creative"));
-                break;
-            case "adventure":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode adventure " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Adventure"));
-                break;
-            case "spectator":
-                Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode spectator " + Utils.getRealm(p));
-                p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Spectator"));
-                break;
-            default:
-                p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.error").replaceAll("%gamemode%", args[1]));
+        if (args.length == 1) {
+            p.sendMessage(Utils.getString("messages.commands.rc.errors.noargs"));
+        } else {
+            switch (args[1]) {
+                case "survival":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode survival " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Survival"));
+                    break;
+                case "creative":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode creative " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Creative"));
+                    break;
+                case "adventure":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode adventure " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Adventure"));
+                    break;
+                case "spectator":
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode spectator " + Utils.getRealm(p));
+                    p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Spectator"));
+                    break;
+                default:
+                    p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.error").replaceAll("%gamemode%", args[1]));
+            }
         }
     }
 

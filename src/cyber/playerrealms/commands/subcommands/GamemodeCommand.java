@@ -2,6 +2,7 @@ package cyber.playerrealms.commands.subcommands;
 
 import cyber.playerrealms.commands.SubCommand;
 import cyber.playerrealms.utils.Utils;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -27,25 +28,30 @@ public class GamemodeCommand extends SubCommand {
 
     @Override
     public void perform(Player p, String[] args) {
-        switch (args[1]) {
-            case "survival":
-                p.setGameMode(GameMode.SURVIVAL);
-                p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Survival"));
-                break;
-            case "creative":
-                p.setGameMode(GameMode.CREATIVE);
-                p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Creative"));
-                break;
-            case "adventure":
-                p.setGameMode(GameMode.ADVENTURE);
-                p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Adventure"));
-                break;
-            case "spectator":
-                p.setGameMode(GameMode.SPECTATOR);
-                p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Spectator"));
-                break;
-            default:
-                p.sendMessage(Utils.getString("messages.commands.rc.gamemode.error").replaceAll("%gamemode%", args[1]));
+
+        if (args.length == 1) {
+            p.sendMessage(Utils.getString("messages.commands.rc.gamemode.check").replaceAll("%gamemode%", WordUtils.capitalize(String.valueOf(p.getGameMode()).toLowerCase())));
+        } else {
+            switch (args[1]) {
+                case "survival":
+                    p.setGameMode(GameMode.SURVIVAL);
+                    p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Survival"));
+                    break;
+                case "creative":
+                    p.setGameMode(GameMode.CREATIVE);
+                    p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Creative"));
+                    break;
+                case "adventure":
+                    p.setGameMode(GameMode.ADVENTURE);
+                    p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Adventure"));
+                    break;
+                case "spectator":
+                    p.setGameMode(GameMode.SPECTATOR);
+                    p.sendMessage(Utils.getString("messages.commands.rc.gamemode.set").replaceAll("%gamemode%", "Spectator"));
+                    break;
+                default:
+                    p.sendMessage(Utils.getString("messages.commands.rc.gamemode.error").replaceAll("%gamemode%", args[1]));
+            }
         }
     }
 

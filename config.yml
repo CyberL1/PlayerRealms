@@ -33,6 +33,7 @@ messages:
       errors:
         realmonly: "%prefix% This command won't work outsite of realm"
         nopermission: "%prefix% Insufficent permission"
+        noargs: "%prefix% Not enough arguments"
       noargs:
         header: "&e---------- &rHelp: Realm &e----------"
         description: "&7Below is a list of all Realm commands:"
@@ -40,6 +41,7 @@ messages:
       gamemode:
         set: "%prefix% Set own game mode to %gamemode% Mode"
         error: "%prefix% %gamemode% is not proper game mode"
+        check: "%prefix% Your gamemode is %gamemode%"
       op:
         creator: "%prefix% You cannot op realm creator"
         success: "%prefix% Made %player% a server operator"
@@ -49,9 +51,11 @@ messages:
       time:
         set: "%prefix% Set time to %time%"
         error: "%prefix% %time% is not proper time value"
+        check: "%prefix% The time is %time%"
       difficulty:
         set: "%prefix% The difficulcty has been set to %difficulty%"
         error: "%prefix% %difficulty% is not propper difficulty mode"
+        check: "%prefix% The difficilty is %difficulty%"
       pvp:
         set: "%prefix% Set pvp mode to %mode%"
         error: "%prefix% %mode% is not proper pvp mode"

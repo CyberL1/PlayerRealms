@@ -26,24 +26,29 @@ public class WeatherCommand extends SubCommand {
 
     @Override
     public void perform(Player p, String[] args) {
-        switch (args[1]) {
-            case "clear":
-                p.getWorld().setStorm(false);
-                p.getWorld().setThundering(false);
-                p.sendMessage(Utils.getString("messages.commands.rc.weather.set").replaceAll("%weather%", "clear"));
-                break;
-            case "rain":
-                p.getWorld().setStorm(true);
-                p.getWorld().setThundering(false);
-                p.sendMessage(Utils.getString("messages.commands.rc.weather.set").replaceAll("%weather%", "rain"));
-                break;
-            case "thunder":
-                p.getWorld().setStorm(true);
-                p.getWorld().setThundering(true);
-                p.sendMessage(Utils.getString("messages.commands.rc.weather.set").replaceAll("%weather%", "thunder"));
-                break;
-            default:
-                p.sendMessage(Utils.getString("messages.commands.rc.weather.error").replaceAll("%weather%", args[1]));
+
+        if (args.length == 1) {
+            p.sendMessage(Utils.getString("messages.commands.rc.errors.noargs"));
+        } else {
+            switch (args[1]) {
+                case "clear":
+                    p.getWorld().setStorm(false);
+                    p.getWorld().setThundering(false);
+                    p.sendMessage(Utils.getString("messages.commands.rc.weather.set").replaceAll("%weather%", "clear"));
+                    break;
+                case "rain":
+                    p.getWorld().setStorm(true);
+                    p.getWorld().setThundering(false);
+                    p.sendMessage(Utils.getString("messages.commands.rc.weather.set").replaceAll("%weather%", "rain"));
+                    break;
+                case "thunder":
+                    p.getWorld().setStorm(true);
+                    p.getWorld().setThundering(true);
+                    p.sendMessage(Utils.getString("messages.commands.rc.weather.set").replaceAll("%weather%", "thunder"));
+                    break;
+                default:
+                    p.sendMessage(Utils.getString("messages.commands.rc.weather.error").replaceAll("%weather%", args[1]));
+            }
         }
     }
 

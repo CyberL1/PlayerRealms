@@ -37,7 +37,7 @@ public class RealmManageUI extends Menu {
             p.closeInventory();
             Utils.deleteRealm(p, false);
         } else if (item.getItemMeta().getDisplayName().equals((Utils.getString("items.realms.manage.visibility.name")))) {
-            if (Utils.getRealmVisibility(p.getWorld().getName()) == RealmVisibility.VISIBLE) {
+            if (Utils.getRealmVisibility(Utils.getRealm(p)) == RealmVisibility.VISIBLE) {
                 Utils.setRealmVisibility(p, RealmVisibility.NOTVISIBLE);
             } else {
                 Utils.setRealmVisibility(p, RealmVisibility.VISIBLE);

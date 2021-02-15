@@ -26,7 +26,7 @@ public class ClearCommand extends SubCommand {
 
     @Override
     public void perform(Player p, String[] args) {
-        if (args.length != 2) {
+        if (args.length == 1) {
             p.getInventory().clear();
             p.sendMessage(Utils.getString("messages.commands.rc.clear.success").replaceAll("%player%", p.getName()));
         } else {
