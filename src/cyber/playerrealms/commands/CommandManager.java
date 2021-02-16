@@ -3,6 +3,7 @@ package cyber.playerrealms.commands;
 import cyber.playerrealms.commands.subcommands.*;
 import cyber.playerrealms.utils.PlayerPermission;
 import cyber.playerrealms.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -26,6 +27,7 @@ public class CommandManager implements TabExecutor {
         subcommands.add(new DefaultgamemodeCommand());
         subcommands.add(new ClearCommand());
         subcommands.add(new WeatherCommand());
+        subcommands.add(new HelpCommand());
     }
 
     @Override
@@ -60,6 +62,8 @@ public class CommandManager implements TabExecutor {
                 for (int i = 0; i < getSubCommands().size(); i++)
                     p.sendMessage(Utils.getString("messages.commands.rc.noargs.body").replaceAll("%command%", getSubCommands().get(i).getName()).replaceAll("%description%", getSubCommands().get(i).getDescription()));
             }
+        } else {
+            Bukkit.getLogger().info(Utils.getString("messages.logs.execute.playeronly"));
         }
         return true;
     }

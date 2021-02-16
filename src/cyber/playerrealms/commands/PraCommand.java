@@ -9,8 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.logging.Level;
-
 public class PraCommand implements CommandExecutor {
 
     @Override
@@ -19,7 +17,7 @@ public class PraCommand implements CommandExecutor {
             Player p = (Player) sender;
             new PluginAdminUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         } else {
-            Bukkit.getLogger().log(Level.INFO, Utils.getString("messages.logs.execute.playeronly"));
+            Bukkit.getLogger().info(Utils.getString("messages.logs.execute.playeronly"));
         }
         return true;
     }

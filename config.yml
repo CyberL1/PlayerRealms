@@ -35,9 +35,12 @@ messages:
         nopermission: "%prefix% Insufficent permission"
         noargs: "%prefix% Not enough arguments"
       noargs:
-        header: "&e---------- &rHelp: Realm &e----------"
+        header: "&e---------- &rHelp: Realm &e------------------------"
         description: "&7Below is a list of all Realm commands:"
         body: "&6/rc %command%: &r%description%"
+      help:
+        body: "&e------------ &rHelp: /rc %command% &e---------------------\n&6Description: &r%description%\n&6Usage: &r%syntax%"
+        error: "%prefix% No such command"
       gamemode:
         set: "%prefix% Set own game mode to %gamemode% Mode"
         setother: "%prefix% Set %player%'s gamemode to %gamemode% Mode"

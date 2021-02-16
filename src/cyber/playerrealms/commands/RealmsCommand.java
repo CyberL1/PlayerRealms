@@ -13,8 +13,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.logging.Level;
-
 public class RealmsCommand implements CommandExecutor {
 
     @Override
@@ -34,7 +32,7 @@ public class RealmsCommand implements CommandExecutor {
                 }
             }
         } else {
-            Bukkit.getLogger().log(Level.INFO, Utils.getString("messages.logs.execute.playeronly"));
+            Bukkit.getLogger().info(Utils.getString("messages.logs.execute.playeronly"));
         }
         return true;
     }

@@ -17,9 +17,9 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         // Commands
-        this.getCommand("realms").setExecutor(new RealmsCommand());
-        this.getCommand("rc").setExecutor(new CommandManager());
-        this.getCommand("pra").setExecutor(new PraCommand());
+        getCommand("realms").setExecutor(new RealmsCommand());
+        getCommand("rc").setExecutor(new CommandManager());
+        getCommand("pra").setExecutor(new PraCommand());
 
         // Listeners
         new PlayerChatListener(this);
