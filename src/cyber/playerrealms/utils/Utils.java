@@ -51,9 +51,8 @@ public class Utils {
         return getRealmDataFile(p.getWorld().getName()).getConfigurationSection("players").getInt(p.getUniqueId().toString());
     }
 
-    public static void gotoRealm(Player playerRealm, Player playerToTp) throws IOException {
-        if (getRealmDataFile(getRealm(playerRealm)).getConfigurationSection("settings").getBoolean("closed", true))
-            openRealm(playerRealm);
+    public static void gotoRealm(Player playerRealm, Player playerToTp) {
+        if (Bukkit.getWorld(getRealm(playerRealm)) == null) openRealm(playerRealm);
         Bukkit.dispatchCommand(getConsole(), "mv tp " + playerToTp.getName() + " realm-" + playerRealm.getName());
     }
 
@@ -75,6 +74,7 @@ public class Utils {
         p.sendMessage(getString("messages.realms.creation.started"));
 
         Bukkit.dispatchCommand(getConsole(), "mv create realm-" + p.getName() + " normal");
+        Bukkit.dispatchCommand(getConsole(), "mvm set autoload false realm-" + p.getName());
         YamlConfiguration file = getRealmDataFile(getRealm(p));
         file.createSection("settings");
         file.createSection("players");
@@ -85,20 +85,14 @@ public class Utils {
         p.sendMessage(getString("messages.realms.creation.done"));
     }
 
-    public static void closeRealm(Player p) throws IOException {
+    public static void closeRealm(Player p) {
         Bukkit.dispatchCommand(getConsole(), "mv unload realm-" + p.getName());
-        YamlConfiguration file = getRealmDataFile(getRealm(p));
-        file.getConfigurationSection("settings").set("closed", true);
-        file.save(getRealmDataFileRaw(getRealm(p)));
         p.sendMessage(getString("messages.commands.rc.close.success"));
     }
 
-    public static void openRealm(Player p) throws IOException {
+    public static void openRealm(Player p) {
         p.sendMessage(getString("messages.realms.opening"));
         Bukkit.dispatchCommand(getConsole(), "mv load realm-" + p.getName());
-        YamlConfiguration file = getRealmDataFile(getRealm(p));
-        file.getConfigurationSection("settings").set("closed", false);
-        file.save(getRealmDataFileRaw(getRealm(p)));
     }
 
     public static void deleteRealm(Player p, boolean silent) throws IOException {

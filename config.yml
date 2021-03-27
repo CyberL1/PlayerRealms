@@ -16,6 +16,7 @@ messages:
   logs:
     reload:
       done: "%prefix% Plugin config reloaded"
+    updateavaliable: "An update is avaliable, downoad it at %url%"
     execute:
       playeronly: "%prefix% Only player can execute this command"
   realms:
@@ -113,6 +114,9 @@ items:
       close:
         item: barrier
         name: "Close realm"
+      open:
+        item: dark_oak_door
+        name: "Open realm"
 guis:
   realms:
     selector: "Realm menu - Selector"
