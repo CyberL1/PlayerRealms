@@ -1,7 +1,7 @@
 name: PlayerRealms
 main: cyber.playerrealms.Main
 description: Free realms plugin
-version: 1.0
+version: 1.1
 author: Cyber
 depend: [ Multiverse-Core, PerWorldServer, PerWorldInventory ]
 api-version: 1.16
