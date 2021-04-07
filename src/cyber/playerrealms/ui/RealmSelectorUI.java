@@ -36,7 +36,7 @@ public class RealmSelectorUI extends Menu {
             Utils.createRealm(p);
         } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.go.name"))) {
             p.closeInventory();
-            Utils.gotoRealm(p, p);
+            Utils.gotoRealm("OVERWORLD", p, p);
         } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.manage.name"))) {
             new RealmManageUI(PlayerMenuUtility.getPlayerMenuUtility(p)).open();
         } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.realms.visit.name"))) {

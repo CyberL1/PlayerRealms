@@ -33,19 +33,19 @@ public class DefaultgamemodeCommand extends SubCommand {
         } else {
             switch (args[1]) {
                 case "survival":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode survival " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode survival " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Survival"));
                     break;
                 case "creative":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode creative " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode creative " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Creative"));
                     break;
                 case "adventure":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode adventure " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode adventure " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Adventure"));
                     break;
                 case "spectator":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode spectator " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set mode spectator " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.defaultgamemode.set").replaceAll("%gamemode%", "Spectator"));
                     break;
                 default:

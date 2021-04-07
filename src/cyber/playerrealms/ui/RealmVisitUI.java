@@ -39,7 +39,7 @@ public class RealmVisitUI extends Menu {
         ItemStack item = e.getCurrentItem();
 
         if (item.getType().equals(Material.matchMaterial(Utils.getString("items.realms.visit.tpitem")))) {
-            Utils.gotoRealm(Bukkit.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName()), p);
+            Utils.gotoRealm("OVERWORLD", Bukkit.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName()), p);
         } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.close"))) {
             p.closeInventory();
         } else if (item.getItemMeta().getDisplayName().equals(Utils.getString("items.previous"))) {
@@ -55,6 +55,8 @@ public class RealmVisitUI extends Menu {
                         .filter(w ->
                                 w.getName().startsWith("realm-") &&
                                         !w.getName().equals("realm-" + p.getName()) &&
+                                        !w.getName().endsWith("_nether") &&
+                                        !w.getName().endsWith("_the_end") &&
                                         Utils.getRealmVisibility(w.getName()) == RealmVisibility.VISIBLE)
                         .collect(Collectors.toList());
 
@@ -77,6 +79,8 @@ public class RealmVisitUI extends Menu {
                 .filter(w ->
                         w.getName().startsWith("realm-") &&
                                 !w.getName().equals("realm-" + playerMenuUtility.getOwner().getName()) &&
+                                !w.getName().endsWith("_nether") &&
+                                !w.getName().endsWith("_the_end") &&
                                 Utils.getRealmVisibility(w.getName()) == RealmVisibility.VISIBLE)
                 .collect(Collectors.toList());
 

@@ -3,6 +3,7 @@ package cyber.playerrealms.commands.subcommands;
 import cyber.playerrealms.commands.SubCommand;
 import cyber.playerrealms.utils.Utils;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -33,11 +34,11 @@ public class PvpCommand extends SubCommand {
         } else {
             switch (args[1]) {
                 case "true":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set pvp true " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set pvp true " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.pvp.set").replaceAll("%pvp%", "true"));
                     break;
                 case "false":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set pvp false " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set pvp false " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.pvp.set").replaceAll("%pvp%", "false"));
                     break;
                 default:

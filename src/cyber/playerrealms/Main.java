@@ -1,6 +1,7 @@
 package cyber.playerrealms;
 
 import cyber.playerrealms.commands.CommandManager;
+import cyber.playerrealms.commands.OverworldCommand;
 import cyber.playerrealms.commands.PraCommand;
 import cyber.playerrealms.commands.RealmsCommand;
 import cyber.playerrealms.listeners.*;
@@ -19,12 +20,14 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         new UpdateChecker(this, 89101).getVersion(ver -> {
-            if (!this.getDescription().getVersion().equalsIgnoreCase(ver)) this.getLogger().info(Utils.getString("messages.logs.updateavaliable").replaceAll("%url%", "https://www.spigotmc.org/resources/89101"));
+            if (!this.getDescription().getVersion().equalsIgnoreCase(ver))
+                this.getLogger().info(Utils.getString("messages.logs.updateavaliable").replaceAll("%url%", "https://www.spigotmc.org/resources/89101"));
         });
 
         // Commands
         getCommand("realms").setExecutor(new RealmsCommand());
         getCommand("rc").setExecutor(new CommandManager());
+        getCommand("overworld").setExecutor(new OverworldCommand());
         getCommand("pra").setExecutor(new PraCommand());
 
         // Listeners
@@ -34,6 +37,8 @@ public class Main extends JavaPlugin {
         new PlayerDropItemListener(this);
         new EntityPickupItemListener(this);
         new PlayerInteractListener(this);
+        new PlayerPortalListener(this);
+        new EntityPortalEnterListener(this);
     }
 
     public static Main getInstance() {

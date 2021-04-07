@@ -38,7 +38,7 @@ public class RealmManageUI extends Menu {
             p.closeInventory();
             Utils.deleteRealm(p, false);
         } else if (item.getItemMeta().getDisplayName().equals((Utils.getString("items.realms.manage.visibility.name")))) {
-            if (Utils.getRealmVisibility(Utils.getRealm(p)) == RealmVisibility.VISIBLE) {
+            if (Utils.getRealmVisibility(Utils.getRealm("OVERWORLD", p)) == RealmVisibility.VISIBLE) {
                 Utils.setRealmVisibility(p, RealmVisibility.NOTVISIBLE);
             } else {
                 Utils.setRealmVisibility(p, RealmVisibility.VISIBLE);
@@ -57,10 +57,10 @@ public class RealmManageUI extends Menu {
     public void setMenuItems() {
         Player p = playerMenuUtility.getOwner();
 
-        inventory.setItem(0, makeItem(Utils.getString("items.realms.manage.visibility.item"), Utils.getString("items.realms.manage.visibility.name"), Utils.getString("items.realms.manage.visibility.lore").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(Utils.getRealm(p))))));
+        inventory.setItem(0, makeItem(Utils.getString("items.realms.manage.visibility.item"), Utils.getString("items.realms.manage.visibility.name"), Utils.getString("items.realms.manage.visibility.lore").replaceAll("%visibility%", String.valueOf(Utils.getRealmVisibility(Utils.getRealm("OVERWORLD", p))))));
         inventory.setItem(1, makeItem(Utils.getString("items.realms.manage.delete.item"), Utils.getString("items.realms.manage.delete.name"), Utils.getString("items.realms.manage.delete.lore")));
-        if (Bukkit.getWorld(Utils.getRealm(p)) != null) inventory.setItem(2, makeItem(Utils.getString("items.realms.manage.close.item"), Utils.getString("items.realms.manage.close.name")));
-        if (Bukkit.getWorld(Utils.getRealm(p)) == null) inventory.setItem(2, makeItem(Utils.getString("items.realms.manage.open.item"), Utils.getString("items.realms.manage.open.name")));
+        if (Bukkit.getWorld(Utils.getRealm("OVERWORLD", p)) != null) inventory.setItem(2, makeItem(Utils.getString("items.realms.manage.close.item"), Utils.getString("items.realms.manage.close.name")));
+        if (Bukkit.getWorld(Utils.getRealm("OVERWORLD", p)) == null) inventory.setItem(2, makeItem(Utils.getString("items.realms.manage.open.item"), Utils.getString("items.realms.manage.open.name")));
         inventory.setItem(8, makeItem(Utils.getString("items.close.item"), Utils.getString("items.close.name")));
 
     }

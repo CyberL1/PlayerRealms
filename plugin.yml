@@ -1,7 +1,7 @@
 name: PlayerRealms
 main: cyber.playerrealms.Main
 description: Free realms plugin
-version: 1.1
+version: 1.3
 author: Cyber
 depend: [ Multiverse-Core, PerWorldServer, PerWorldInventory ]
 api-version: 1.16
@@ -14,6 +14,10 @@ commands:
     description: Allows you to execute commands on relam.
     usage: /<command> <subcommand> [arguments...]
     permission: playerrealms.realms
+  overworld:
+    description: Allows you to teleport to the overworld.
+    usage: /<command>
+    permission: playerrealms.realm
   pra:
     description: Opens plugin admin ui.
     usage: /<command>

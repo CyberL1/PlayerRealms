@@ -34,19 +34,19 @@ public class DifficultyCommand extends SubCommand {
         } else {
             switch (args[1]) {
                 case "easy":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff easy " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff easy " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Easy"));
                     break;
                 case "hard":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff hard " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff hard " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Hard"));
                     break;
                 case "normal":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff normal " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff normal " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Normal"));
                     break;
                 case "peaceful":
-                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff peaceful " + Utils.getRealm(p));
+                    Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set diff peaceful " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
                     p.sendMessage(Utils.getString("messages.commands.rc.difficulty.set").replaceAll("%difficulty%", "Peaceful"));
                     break;
                 default:

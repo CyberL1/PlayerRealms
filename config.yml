@@ -72,6 +72,9 @@ messages:
       weather:
         set: "%prefix% Set the weather to %weather%"
         error: "%prefix% %weather% is not proper weather"
+    overworld:
+      errors:
+        alreadyinoverworld: "%prefix% &4&lYou are already in the overworld"
 items:
   next:
     item: arrow
@@ -126,3 +129,4 @@ guis:
     manage: "&eRealm menu - Manage"
     visit: "Realm menu - Visit"
     admin: "PlayerRealms - Admin menu"
+    teleport: "Realm menu - Teleport"
