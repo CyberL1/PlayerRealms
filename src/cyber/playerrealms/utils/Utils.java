@@ -26,6 +26,10 @@ public class Utils {
         return colorize(Main.getInstance().getConfig().getString(s).replaceAll("%prefix%", Main.getInstance().getConfig().getString(colorize("messages.prefix"))));
     }
 
+    public static boolean getBoolean(String path) {
+        return Main.getInstance().getConfig().getBoolean(path);
+    }
+
     public static File getRealmDataFolder() {
         return new File(Main.getInstance().getDataFolder(), "realms");
     }
@@ -63,7 +67,7 @@ public class Utils {
 
     public static void gotoRealm(String type, Player playerRealm, Player playerToTp) {
         if (Bukkit.getWorld(getRealm("OVERWORLD", playerRealm)) == null) openRealm(playerRealm);
-        playerRealm.teleport(Bukkit.getWorld(getRealm(type, playerRealm)).getSpawnLocation());
+        playerToTp.teleport(Bukkit.getWorld(getRealm(type, playerRealm)).getSpawnLocation());
     }
 
     public static void gotoLobby(Player p) {
@@ -85,10 +89,17 @@ public class Utils {
 
         Bukkit.dispatchCommand(getConsole(), "mv create realm-" + p.getName() + " normal");
         Bukkit.dispatchCommand(getConsole(), "mvm set autoload false realm-" + p.getName());
-        Bukkit.dispatchCommand(getConsole(), "mv create realm-" + p.getName() + "_nether nether");
-        Bukkit.dispatchCommand(getConsole(), "mvm set autoload false realm-" + p.getName() + "_nether");
-        Bukkit.dispatchCommand(getConsole(), "mv create realm-" + p.getName() + "_the_end end");
-        Bukkit.dispatchCommand(getConsole(), "mvm set autoload false realm-" + p.getName() + "_the_end");
+
+        if (getBoolean("worlds_enabled.nether")) {
+            Bukkit.dispatchCommand(getConsole(), "mv create realm-" + p.getName() + "_nether nether");
+            Bukkit.dispatchCommand(getConsole(), "mvm set autoload false realm-" + p.getName() + "_nether");
+        }
+
+        if (getBoolean("worlds_enabled.the_end")) {
+            Bukkit.dispatchCommand(getConsole(), "mv create realm-" + p.getName() + "_the_end end");
+            Bukkit.dispatchCommand(getConsole(), "mvm set autoload false realm-" + p.getName() + "_the_end");
+        }
+
         YamlConfiguration file = getRealmDataFile(getRealm("OVERWORD", p));
         file.createSection("settings");
         file.createSection("players");
@@ -101,26 +112,38 @@ public class Utils {
 
     public static void closeRealm(Player p) {
         Bukkit.dispatchCommand(getConsole(), "mv unload realm-" + p.getName());
-        Bukkit.dispatchCommand(getConsole(), "mv unload realm-" + p.getName() + "_nether");
-        Bukkit.dispatchCommand(getConsole(), "mv unload realm-" + p.getName() + "_the_end");
+        if (getBoolean("worlds_enabled.nether"))
+            Bukkit.dispatchCommand(getConsole(), "mv unload realm-" + p.getName() + "_nether");
+        if (getBoolean("worlds_enabled.the_end"))
+            Bukkit.dispatchCommand(getConsole(), "mv unload realm-" + p.getName() + "_the_end");
         p.sendMessage(getString("messages.commands.rc.close.success"));
     }
 
     public static void openRealm(Player p) {
         p.sendMessage(getString("messages.realms.opening"));
         Bukkit.dispatchCommand(getConsole(), "mv load realm-" + p.getName());
-        Bukkit.dispatchCommand(getConsole(), "mv load realm-" + p.getName() + "_nether");
-        Bukkit.dispatchCommand(getConsole(), "mv load realm-" + p.getName() + "_the_end");
+        if (getBoolean("worlds_enabled.nether"))
+            Bukkit.dispatchCommand(getConsole(), "mv load realm-" + p.getName() + "_nether");
+        if (getBoolean("worlds_enabled.the_end"))
+            Bukkit.dispatchCommand(getConsole(), "mv load realm-" + p.getName() + "_the_end");
     }
 
     public static void deleteRealm(Player p, boolean silent) throws IOException {
         getRealmDataFileRaw(getRealm("OVERWORD", p)).delete();
+
         Bukkit.dispatchCommand(getConsole(), "mv remove realm-" + p.getName());
-        Bukkit.dispatchCommand(getConsole(), "mv remove realm-" + p.getName() + "_nether");
-        Bukkit.dispatchCommand(getConsole(), "mv remove realm-" + p.getName() + "_the_end");
         FileUtils.deleteDirectory(new File(getRealm("OVERWORD", p)));
-        FileUtils.deleteDirectory(new File(getRealm("NETHER", p)));
-        FileUtils.deleteDirectory(new File(getRealm("THE_END", p)));
+
+        if (new File(getRealm("NETHER", p)).exists()) {
+            Bukkit.dispatchCommand(getConsole(), "mv remove realm-" + p.getName() + "_nether");
+            FileUtils.deleteDirectory(new File(getRealm("NETHER", p)));
+        }
+
+        if (new File(getRealm("THE_END", p)).exists()) {
+            Bukkit.dispatchCommand(getConsole(), "mv remove realm-" + p.getName() + "_the_end");
+            FileUtils.deleteDirectory(new File(getRealm("THE_END", p)));
+        }
+
         if (!silent) p.sendMessage(getString("messages.realms.deleted"));
     }
 }

@@ -23,12 +23,20 @@ public class PlayerPortalListener implements Listener {
         e.setCancelled(true);
         if (e.getCause() == PlayerTeleportEvent.TeleportCause.NETHER_PORTAL) {
             if (p.getWorld().getEnvironment() != World.Environment.NETHER) {
-                Utils.gotoRealm("NETHER", p, p);
+                if (Bukkit.getWorld(p.getWorld().getName() + "_nether") != null) {
+                    Utils.gotoRealm("NETHER", p, p);
+                } else {
+                    p.sendMessage(Utils.getString("messages.realms.worlds_disabled.nether"));
+                }
             } else {
                 Utils.gotoRealm("OVERWORLD", p, p);
             }
         } else if (e.getCause() == PlayerTeleportEvent.TeleportCause.END_PORTAL) {
-            Utils.gotoRealm("THE_END", p, p);
+            if (Bukkit.getWorld(p.getWorld().getName() + "_the_end") != null) {
+                Utils.gotoRealm("THE_END", p, p);
+            } else {
+                p.sendMessage(Utils.getString("messages.realms.worlds_disabled.the_end"));
+            }
         }
     }
 }

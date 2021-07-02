@@ -29,6 +29,9 @@ messages:
       creator: "[&cCREATOR&f] %player% %msg%"
     opening: "%prefix% Opening realm, please wait"
     deleted: "%prefix% Realm deleted"
+    worlds_disabled:
+      nether: "%prefix% Nether is disabled"
+      the_end: "%prefix% The end is disabled"
   commands:
     rc:
       errors:
@@ -130,3 +133,6 @@ guis:
     visit: "Realm menu - Visit"
     admin: "PlayerRealms - Admin menu"
     teleport: "Realm menu - Teleport"
+worlds_enabled:
+  nether: true
+  the_end: true

@@ -39,6 +39,7 @@ public class Main extends JavaPlugin {
         new PlayerInteractListener(this);
         new PlayerPortalListener(this);
         new EntityPortalEnterListener(this);
+        new PlayerJoinListener(this);
     }
 
     public static Main getInstance() {
