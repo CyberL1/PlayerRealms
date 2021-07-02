@@ -42,6 +42,7 @@ public class GameruleCommand extends SubCommand {
                 case "doLimitedCrafting":
                 case "doMobLoot":
                 case "doMobSpawning":
+                case "doPatrolSpawning":
                 case "doTileDrops":
                 case "doTraderSpawning":
                 case "doWeatherCycle":
@@ -58,7 +59,7 @@ public class GameruleCommand extends SubCommand {
                 case "randomTickSpeed":
                 case "sendCommandFeedback":
                 case "showDeathMessages":
-                case "spanRadius":
+                case "spawnRadius":
                 case "spectatorsGenerateChunks":
                 case "universalAnger":
                     p.sendMessage(Utils.getString("messages.commands.rc.gamerule.check").replaceAll("%gamerule%", args[1]).replaceAll("%value%", String.valueOf(p.getWorld().getGameRuleValue(GameRule.getByName(args[1])))));
@@ -113,6 +114,10 @@ public class GameruleCommand extends SubCommand {
                     break;
                 case "doMobSpawning":
                     world.setGameRule(GameRule.DO_MOB_SPAWNING, args[2].equals("true"));
+                    done = true;
+                    break;
+                case "doPatrolSpawning":
+                    world.setGameRule(GameRule.DO_PATROL_SPAWNING, args[2].equals("true"));
                     done = true;
                     break;
                 case "doTileDrops":
