@@ -75,6 +75,11 @@ messages:
       weather:
         set: "%prefix% Set the weather to %weather%"
         error: "%prefix% %weather% is not proper weather"
+      gamerule:
+        check: "%gamerule% value is %value%"
+        set: "%gamerule% has been set to %value%"
+        errors:
+          invalid: "%gamerule% in not a valid gamerule"
     overworld:
       errors:
         alreadyinoverworld: "%prefix% &4&lYou are already in the overworld"

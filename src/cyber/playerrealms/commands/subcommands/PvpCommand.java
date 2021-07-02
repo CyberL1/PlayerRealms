@@ -23,26 +23,26 @@ public class PvpCommand extends SubCommand {
 
     @Override
     public String getSyntax() {
-        return "/rc pvp <mode>";
+        return "/rc pvp <true/false>";
     }
 
     @Override
     public void perform(Player p, String[] args) {
 
         if (args.length == 1) {
-            p.sendMessage(Utils.getString("messages.commands.rc.pvp.check").replaceAll("%pvp%", String.valueOf(p.getWorld().getPVP())));
+            p.sendMessage(Utils.getString("messages.commands.rc.pvp.check").replaceAll("%value%", String.valueOf(p.getWorld().getPVP())));
         } else {
             switch (args[1]) {
                 case "true":
                     Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set pvp true " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
-                    p.sendMessage(Utils.getString("messages.commands.rc.pvp.set").replaceAll("%pvp%", "true"));
+                    p.sendMessage(Utils.getString("messages.commands.rc.pvp.set").replaceAll("%value%", "true"));
                     break;
                 case "false":
                     Bukkit.dispatchCommand(Utils.getConsole(), "mv modify set pvp false " + Utils.getRealm(Bukkit.getWorld(p.getWorld().getName()).getEnvironment().toString(), p));
-                    p.sendMessage(Utils.getString("messages.commands.rc.pvp.set").replaceAll("%pvp%", "false"));
+                    p.sendMessage(Utils.getString("messages.commands.rc.pvp.set").replaceAll("%value%", "false"));
                     break;
                 default:
-                    p.sendMessage(Utils.getString("messages.commands.rc.pvp.error").replaceAll("%pvp%", args[1]));
+                    p.sendMessage(Utils.getString("messages.commands.rc.pvp.error").replaceAll("%value%", args[1]));
                     break;
             }
         }

@@ -27,6 +27,7 @@ public class CommandManager implements TabExecutor {
         subcommands.add(new DefaultgamemodeCommand());
         subcommands.add(new ClearCommand());
         subcommands.add(new WeatherCommand());
+        subcommands.add(new GameruleCommand());
     }
 
     @Override
