@@ -62,9 +62,9 @@ messages:
         error: "%prefix% %difficulty% is not propper difficulty mode"
         check: "%prefix% The difficulty is %difficulty%"
       pvp:
-        set: "%prefix% Set pvp mode to %pvp%"
-        error: "%prefix% %pvp% is not proper pvp mode"
-        check: "%prefix% Pvp mode is %pvp%"
+        set: "%prefix% Set pvp mode to %value%"
+        error: "%prefix% %value% is not proper pvp mode"
+        check: "%prefix% Pvp mode is %value%"
       defaultgamemode:
         set: "%prefix% The default game mode is now %gamemode% Mode"
         error: "%prefix% %gamemode% is not proper game mode"
