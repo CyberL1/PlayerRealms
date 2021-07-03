@@ -18,11 +18,9 @@ public class EntityPickupItemListener implements Listener {
     public void onEntityPickupItem(EntityPickupItemEvent e) {
         Player p = (Player) e.getEntity();
 
-        if (p instanceof Player) {
-            if (!p.getWorld().getName().equals(Utils.getString("lobby.world"))) return;
-            if (Utils.getString("lobby.protection.pickup").equals("true")) {
-                e.setCancelled(true);
-            }
+        if (!p.getWorld().getName().equals(Utils.getString("lobby.world"))) return;
+        if (Utils.getString("lobby.protection.pickup").equals("true")) {
+            e.setCancelled(true);
         }
     }
 }

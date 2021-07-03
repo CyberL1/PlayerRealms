@@ -56,7 +56,7 @@ public class CommandManager implements TabExecutor {
                         }
                     }
                 }
-            } else if (args.length == 0) {
+            } else {
                 p.sendMessage(Utils.getString("messages.commands.rc.noargs.header"));
                 p.sendMessage(Utils.getString("messages.commands.rc.noargs.description"));
                 for (int i = 0; i < getSubCommands().size(); i++)
